@@ -62,6 +62,7 @@ void Sample::Setup()
     engineParameters_[EP_FULL_SCREEN]  = false;
     engineParameters_[EP_HEADLESS]     = false;
     engineParameters_[EP_SOUND]        = false;
+    engineParameters_["ResourcePaths"] = "ReleaseData;Data;CoreData";
 
     // Construct a search path to find the resource prefix with two entries:
     // The first entry is an empty path which will be substituted with program/bin directory -- this entry is for binary when it is still in build tree
@@ -284,7 +285,7 @@ void Sample::HandleKeyDown(StringHash /*eventType*/, VariantMap& eventData)
             ++quality;
             if (quality > QUALITY_HIGH)
                 quality = QUALITY_LOW;
-            renderer->SetTextureQuality((MaterialQuality)quality);
+            renderer->SetTextureQuality(quality);
         }
 
         // Material quality
@@ -294,7 +295,7 @@ void Sample::HandleKeyDown(StringHash /*eventType*/, VariantMap& eventData)
             ++quality;
             if (quality > QUALITY_HIGH)
                 quality = QUALITY_LOW;
-            renderer->SetMaterialQuality((MaterialQuality)quality);
+            renderer->SetMaterialQuality(quality);
         }
 
         // Specular lighting
